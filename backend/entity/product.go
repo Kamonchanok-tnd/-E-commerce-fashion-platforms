@@ -14,12 +14,13 @@ type Product struct {
 	SizeID   uint
 	ColorID   uint
 	StatusID   uint
+	TargetID   	uint
 
 	Category 	Category `gorm:"foreignKey:CategoryID"`
 	Color		Color	 `gorm:"foreignKey:ColorID"`
 	Size		Size	 `gorm:"foreignKey:SizeID"`
 	Status   	Status   `gorm:"foreignKey:StatusID"`
+	Target		Target	 `gorm:"foreignKey:TargetID"`
 
 	Rating []Rating  `gorm:"foreignKey:ProductID"`
-
 }

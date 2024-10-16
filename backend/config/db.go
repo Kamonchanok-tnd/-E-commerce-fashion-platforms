@@ -28,6 +28,7 @@ func SetupDatabase() {
 	// AutoMigrate สำหรับทุก entity
 	err := db.AutoMigrate(
 		&entity.User{},
+		&entity.Target{},
 		&entity.Category{},
 		&entity.Color{},
 		&entity.Size{},
@@ -67,4 +68,34 @@ func SetupDatabase() {
 	db.FirstOrCreate(User2, &entity.User{
 		Email: "user@gmail.com",
 	})
+
+
+	categorys := []entity.Category{
+		{Category: "JACKET"},
+		{Category: "COAT"},
+		{Category: "DRESS"},
+		{Category: "TOP"},
+		{Category: "SHIRT"},
+		{Category: "JEANS"},
+		{Category: "TROUSERS"},
+	}
+
+	for i := range categorys {
+		if err := db.FirstOrCreate(&categorys[i], entity.Category{Category: categorys[i].Category}).Error; err != nil {
+			fmt.Printf("Error creating theater: %s\n", err)
+		}
+	}
+
+
+	Targets := []entity.Target{
+		{TargetName: "WOMAN"},
+		{TargetName: "MAN"},
+		{TargetName: "KID"},
+	}
+
+	for i := range categorys {
+		if err := db.FirstOrCreate(&Targets[i], entity.Target{TargetName: Targets[i].TargetName}).Error; err != nil {
+			fmt.Printf("Error creating theater: %s\n", err)
+		}
+	}
 }
