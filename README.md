@@ -1,1 +1,1 @@
-# -E-commerce-fashion-platforms
+# E-commerce-fashion-platforms
